@@ -1,9 +1,5 @@
 # 🛡️ Azure SOC Lab - Cloud Security Operations Center
-<!--
-![GitHub repo size](https://img.shields.io/github/repo-size/SlyCyberLab/Azure-SOC-Lab)
-![Last Commit](https://img.shields.io/github/last-commit/SlyCyberLab/Azure-SOC-Lab)
-![License](https://img.shields.io/github/license/SlyCyberLab/Azure-SOC-Lab)
--->
+
 > **A comprehensive cloud-based Security Operations Center demonstrating real-world threat detection, log analysis, and incident response using Microsoft Azure services.**
 
 ![Lab Status](https://img.shields.io/badge/Lab%20Status-Active-brightgreen)
@@ -28,7 +24,7 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 ## 🏗️ Architecture
 
 <p align="center">
-<img src="[INSERT_NETWORK_DIAGRAM_LINK_HERE]" />
+<img src="https://i.imgur.com/ecZ9oOH.png" />
 <br />
 <strong>Azure SOC Lab Network Architecture - Honeypot with Centralized Logging & Security Monitoring</strong>
 </p>
@@ -44,7 +40,6 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 2. Sign up for free Azure subscription
 3. Complete account verification process
 
-**📸 Screenshot Location:** `screenshots/01-azure-account-creation.png`
 
 #### 2. **Create Resource Group**
 1. In Azure Portal → **Resource Groups** → **Create**
@@ -53,7 +48,7 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 4. Click **Review + Create** → **Create**
 
 <p align="center">
-<img src="[INSERT_SCREENSHOT_RG_CREATION]" height="80%" width="80%"/>
+<img src="https://i.imgur.com/ZKHQTmc.png" height="80%" width="80%"/>
 <br />
 <strong>Resource Group Creation - Organizing Cloud Resources</strong>
 </p>
@@ -393,6 +388,7 @@ SecurityEvent
 | **VM Not Accessible** | RDP connection fails | Check public IP and NSG rules |
 | **No Attack Data** | No failed logins | Wait 24-48 hours for discovery |
 
+<!--
 ## 📁 Repository Structure
 
 ```
@@ -428,7 +424,7 @@ SecurityEvent
 ├── README.md
 └── LICENSE
 ```
-
+-->
 ## 🎓 Skills Demonstrated
 
 **Cloud Security:**
