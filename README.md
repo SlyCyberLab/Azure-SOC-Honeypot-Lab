@@ -24,7 +24,7 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 ## 🏗️ Architecture
 
 <p align="center">
-<img src="https://i.imgur.com/ecZ9oOH.png" />
+<img src="https://i.imgur.com/dqCBk4H.png" />
 <br />
 <strong>Azure SOC Lab Network Architecture - Honeypot with Centralized Logging & Security Monitoring</strong>
 </p>
@@ -70,12 +70,20 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 8. Click **Review + Create** → **Create**
 
 <p align="center">
-<img src="[INSERT_SCREENSHOT_VNET_CONFIG]" height="80%" width="80%"/>
-<br />
-<strong>Virtual Network Configuration</strong>
+  <table>
+    <tr>
+      <td><img src="https://i.imgur.com/ZOEKTIl.png" width="400" height="300"/></td>
+      <td><img src="https://i.imgur.com/nOo0mip.png" width="400" height="300"/></td>
+    </tr>
+  </table>
+</p>
+<p align="center">
+  <strong>Virtual Network Configuration</strong>
 </p>
 
-**📸 Screenshot Needed:** Virtual network creation process and final configuration
+
+
+
 
 ### Phase 3: Honeypot VM Deployment
 
@@ -94,6 +102,7 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 <p align="center">
 <img src="[INSERT_SCREENSHOT_VM_BASICS]" height="80%" width="80%"/>
 <br />
+   
 <strong>VM Basic Configuration - Honeypot Disguised as Production Server</strong>
 </p>
 
