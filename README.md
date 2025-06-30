@@ -96,11 +96,11 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 2. **Resource Group:** `RG-SOC-Lab`
 3. **Virtual machine name:** `PROD-WEB-01` *(appears as production web server)*
 4. **Region:** Same as previous resources
-5. **Image:** `Windows 11 Pro`
-6. **Size:** `Standard_B2s (2 vcpus, 4 GiB memory)` *(cost-effective for lab)*
+5. **Image:** `Windows 11 Enterprise`
+6. **Size:** `Standard_B2s (1 vcpu, 1 GiB memory)` *(free services eligible)*
 
 <p align="center">
-<img src="[INSERT_SCREENSHOT_VM_BASICS]" height="80%" width="80%"/>
+<img src="https://i.imgur.com/ewQrv0J.png" height="80%" width="80%"/>
 <br />
    
 <strong>VM Basic Configuration - Honeypot Disguised as Production Server</strong>
@@ -108,12 +108,8 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 
 **Administrator Account:**
 - **Username:** `sysadmin` *(attractive target for attackers)*
-- **Password:** `1Password!` *(intentionally weak for honeypot)*
+- **Password:** `123Password!` *(intentionally weak for honeypot)*
 - ✅ **Confirm licensing requirements**
-
-**📸 Screenshots Needed:**
-- `screenshots/03-vm-basic-config.png`
-- `screenshots/04-vm-admin-account.png`
 
 #### 2. **Disk Configuration**
 1. **Disk Type:** `Standard SSD` (sufficient for lab purposes)
@@ -130,7 +126,7 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 7. ✅ **Delete public IP and NIC when VM is deleted**
 
 <p align="center">
-<img src="[INSERT_SCREENSHOT_VM_NETWORKING]" height="80%" width="80%"/>
+<img src="https://i.imgur.com/B6M6hhp.png" height="80%" width="80%"/>
 <br />
 <strong>VM Network Configuration - Exposing RDP to Internet</strong>
 </p>
@@ -149,12 +145,11 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 3. Wait for deployment completion (5-10 minutes)
 
 <p align="center">
-<img src="[INSERT_SCREENSHOT_VM_DEPLOYMENT]" height="80%" width="80%"/>
+<img src="https://i.imgur.com/ymCISDe.png" height="80%" width="80%"/>
 <br />
-<strong>VM Deployment in Progress</strong>
+<strong>Successful VM deployment confirmation</strong>
 </p>
 
-**📸 Screenshot Needed:** Successful VM deployment confirmation
 
 ### Phase 4: Honeypot Configuration
 
