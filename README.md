@@ -100,8 +100,14 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 6. **Size:** `Standard_B2s (1 vcpu, 1 GiB memory)` *(free services eligible)*
 
 <p align="center">
-<img src="https://i.imgur.com/ewQrv0J.png" height="80%" width="80%"/>
-<br />
+  <table>
+    <tr>
+      <td><img src="https://i.imgur.com/ewQrv0J.png" width="400" height="300"/></td>
+      <td><img src="https://i.imgur.com/B6M6hhp.png" width="400" height="300"/></td>
+    </tr>
+  </table>
+</p>
+<p align="center">
    
 <strong>VM Basic Configuration - Honeypot Disguised as Production Server</strong>
 </p>
@@ -126,9 +132,9 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 7. ✅ **Delete public IP and NIC when VM is deleted**
 
 <p align="center">
-<img src="https://i.imgur.com/B6M6hhp.png" height="80%" width="80%"/>
+<img src="https://i.imgur.com/bRKicjK.png" height="80%" width="80%"/>
 <br />
-<strong>VM Network Configuration - Exposing RDP to Internet</strong>
+<strong>VM Inbound Security Rule - Exposing it to Internet</strong>
 </p>
 
 > ⚠️ **Security Note:** We're intentionally exposing RDP to the internet for honeypot purposes. Never do this in production!
@@ -145,7 +151,7 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 3. Wait for deployment completion (5-10 minutes)
 
 <p align="center">
-<img src="https://i.imgur.com/ymCISDe.png" height="80%" width="80%"/>
+<img src="https://i.imgur.com/PAQOzaA.png" height="80%" width="80%"/>
 <br />
 <strong>Successful VM deployment confirmation</strong>
 </p>
@@ -158,7 +164,7 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 #### 1. **Connect to VM**
 1. Navigate to your VM → **Connect** → **RDP**
 2. Download RDP file and connect
-3. Login with credentials: `sysadmin` / `1Password!`
+3. Login with credentials: `sysadmin` / `123Password!`
 
 <p align="center">
 <img src="[INSERT_SCREENSHOT_RDP_CONNECTION]" height="80%" width="80%"/>
