@@ -104,15 +104,9 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 - ✅ **Confirm licensing requirements**
 
 <p align="center">
-  <table>
-    <tr>
-      <td><img src="https://imgur.com/ewQrv0J.png" width="400" height="300"/></td>
-      <td><img src="https://imgur.com/B6M6hhp.png" width="400" height="300"/></td>
-    </tr>
-  </table>
-</p>
-<p align="center">
-  <strong>VM Basic Configuration - Honeypot Disguised as Production Server</strong>
+<img src="https://imgur.com/ewQrv0J.png" height="80%" width="80%"/>
+<br />
+<strong>VM Basic Configurationc</strong>
 </p>
 
 #### 2. **Network Configuration**
@@ -124,21 +118,18 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 6. **Select inbound ports:** `RDP (3389)`
 7. ✅ **Delete public IP and NIC when VM is deleted**
 
-> ⚠️ **Security Note:** We're intentionally exposing RDP to the internet for honeypot purposes. Never do this in production!
-
-#### 3. **Complete VM Deployment**
-1. **Management:** Disable boot diagnostics (cost savings)
-2. **Advanced:** Keep defaults
-3. **Tags:** Optional
-4. Click **Review + create** → **Create**
-5. Wait for deployment completion (5-10 minutes)
-
+<p align="center">
+<img src="https://imgur.com/B6M6hhp.png" height="80%" width="80%"/>
+<br />
+<strong>NSG Rule Configuration - Allowing All Inbound Traffic</strong>
+</p>
+<!--
 <p align="center">
 <img src="https://imgur.com/ymCISDe.png" height="80%" width="80%"/>
 <br />
 <strong>VM Deployment Completed Successfully</strong>
 </p>
-
+-->
 ### Phase 4: Honeypot Configuration & Vulnerability
 
 **🔓 Making the VM Intentionally Vulnerable**
@@ -199,12 +190,7 @@ Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
 
 **🔍 Local Event Log Analysis**
 
-#### 1. **Generate Failed Login Events**
-1. From your host machine, attempt to RDP to the VM
-2. Intentionally fail login 3 times using username: `employee`
-3. Use incorrect passwords to generate security events
-
-#### 2. **Examine Windows Event Logs**
+#### 1. **Examine Windows Event Logs**
 1. On the VM: **Start** → **Event Viewer**
 2. **Windows Logs** → **Security**
 3. Look for **Event ID 4625** (Failed logon attempts)
@@ -309,14 +295,6 @@ SecurityEvent
 <strong>Basic KQL Query Results - Failed Login Attempts</strong>
 </p>
 
-**Enhanced Failed Login Query with Specific Fields:**
-```kql
-SecurityEvent
-| where EventID == 4625
-| where TimeGenerated > ago(24h)
-| project TimeGenerated, IpAddress, Account, WorkstationName, IpAddress
-| order by TimeGenerated desc
-```
 
 #### 3. **Real-Time Attack Monitoring**
 **Recent Failed Logins (Last 5 Minutes):**
@@ -332,7 +310,7 @@ SecurityEvent
 ```kql
 SecurityEvent
 | where EventID == 4625
-| where TimeGenerated > ago(1h)
+| where TimeGenerated > ago(6h)
 | summarize AttackCount = count() by IpAddress
 | order by AttackCount desc
 ```
