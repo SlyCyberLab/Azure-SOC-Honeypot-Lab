@@ -11,7 +11,7 @@
 
 This home lab demonstrates the deployment and configuration of a complete Security Operations Center (SOC) environment using Microsoft Azure cloud services. The project showcases skills in cloud security, threat detection, log analysis, and security incident response through a deliberately exposed honeypot system that attracts and analyzes real-world attacks from global threat actors.
 
-**Lab Results**: Over **6,000 attack attempts** recorded in just 30 minutes, demonstrating the immediate threat landscape facing exposed systems on the internet.
+**Lab Results**: Over **6,000 attack attempts** recorded in just a couple of hours, demonstrating the immediate threat landscape facing exposed systems on the internet.
 
 ### 🎯 Objectives Achieved
 - ✅ Azure cloud infrastructure deployment and management
@@ -47,11 +47,11 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 #### 2. **Create Resource Group**
 1. In Azure Portal → **Resource Groups** → **Create**
 2. **Resource Group Name:** `RG-SOC-Lab`
-3. **Region:** `East US 2` (or closest region for optimal performance)
+3. **Region:** `East US` (or closest region for optimal performance)
 4. Click **Review + Create** → **Create**
 
 <p align="center">
-<img src="https://i.imgur.com/ZKHQTmc.png" height="80%" width="80%"/>
+<img src="https://i.imgur.com/ZKHQTmc.png" height="70%" width="70%"/>
 <br />
 <strong>Resource Group Creation - Organizing Cloud Resources</strong>
 </p>
@@ -89,24 +89,20 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 **🍯 Windows VM Honeypot Setup**
 
 #### 1. **Create Virtual Machine**
-
-**Basic Configuration:**
 1. Azure Portal → **Virtual Machines** → **Create** → **Azure virtual machine**
 2. **Resource Group:** `RG-SOC-Lab`
 3. **Virtual machine name:** `PROD-WEB-01` *(disguised as production web server)*
 4. **Region:** `East US 2`
 5. **Image:** `Windows 10 Pro`
-6. **Size:** `Standard_B2s (1 vcpus, 1 GiB memory)` *(cost-effective for lab)*
-
-**Administrator Account:**
-- **Username:** `sysadmin` *(attractive target for attackers)*
-- **Password:** `123Password!` *(intentionally common pattern)*
-- ✅ **Confirm licensing requirements**
+6. **Size:** `Standard_B2s (1 vcpu, 1 GiB memory)` *(cost-effective for lab)*
+7. **Username:** `sysadmin` / **Password:** `123Password!`
+8. **Public inbound ports:** Allow RDP (3389)
+9. **Review + Create** → **Create**
 
 <p align="center">
-<img src="https://imgur.com/ewQrv0J.png" height="80%" width="80%"/>
+<img src="https://i.imgur.com/ewQrv0J.png" height="70%" width="70%"/>
 <br />
-<strong>VM Basic Configurationc</strong>
+<strong>VM Basic Configuration - Honeypot Disguised as Production Server</strong>
 </p>
 
 #### 2. **Network Configuration**
@@ -116,75 +112,42 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 4. **NIC network security group:** `Basic`
 5. **Public inbound ports:** `Allow selected ports`
 6. **Select inbound ports:** `RDP (3389)`
-7. ✅ **Delete public IP and NIC when VM is deleted**
 
 <p align="center">
-<img src="https://imgur.com/B6M6hhp.png" height="80%" width="80%"/>
+<img src="https://i.imgur.com/B6M6hhp.png" height="70%" width="70%"/>
 <br />
-<strong>NSG Rule Configuration - Allowing All Inbound Traffic</strong>
+<strong>VM Network Configuration</strong>
 </p>
-<!--
-<p align="center">
-<img src="https://imgur.com/ymCISDe.png" height="80%" width="80%"/>
-<br />
-<strong>VM Deployment Completed Successfully</strong>
-</p>
--->
+
 ### Phase 4: Honeypot Configuration & Vulnerability
 
 **🔓 Making the VM Intentionally Vulnerable**
 
-
-#### 2. **Configure Network Security Group (Wide Open)**
-**Purpose:** Cloud-level firewall configured to allow ALL traffic
-
+#### 1. **Configure Network Security Group (Wide Open)**
 1. Azure Portal → **Network Security Groups** → Select your VM's NSG
 2. **Inbound security rules** → **Add**
-3. **Source:** `Any (*)`
-4. **Source port ranges:** `*`
-5. **Destination:** `Any (*)`
-6. **Destination port ranges:** `*`
-7. **Protocol:** `Any`
-8. **Action:** `Allow`
-9. **Priority:** `100`
-10. **Name:** `ALLOW-ALL-INBOUND`
-11. **Add** the rule
+3. **Source:** `Any (*)` | **Destination:** `Any (*)`
+4. **Protocol:** `Any` | **Action:** `Allow` | **Priority:** `100`
+5. **Name:** `ALLOW-ALL-INBOUND` → **Add**
 
 <p align="center">
-<img src="https://i.imgur.com/bRKicjK.png" height="80%" width="80%"/>
+<img src="https://i.imgur.com/bRKicjK.png" height="70%" width="70%"/>
 <br />
 <strong>NSG Rule Configuration - Allowing All Inbound Traffic</strong>
 </p>
 
-#### 3. **Disable Windows Firewall**
-**⚠️ CRITICAL:** This makes the VM extremely vulnerable - only do this in isolated lab environments!
-
-**Method 1: GUI Approach**
-1. Open **Windows Security** → **Firewall & network protection**
-2. **Domain network:** Turn off Windows Defender Firewall
-3. **Private network:** Turn off Windows Defender Firewall  
-4. **Public network:** Turn off Windows Defender Firewall
-5. Confirm all three profiles show "Off"
-
-**Method 2: Command Line Approach**
-1. Open **Run** (`Win + R`) → Type `wf.msc` → Enter
-2. Click **Windows Defender Firewall Properties**
-3. **Domain Profile:** Firewall state = `Off`
-4. **Private Profile:** Firewall state = `Off`
-5. **Public Profile:** Firewall state = `Off`
-6. **Apply** → **OK**
+#### 2. **Disable Windows Firewall**
+1. RDP to VM using `sysadmin` / `123Password!`
+2. **Windows Security** → **Firewall & network protection**
+3. Turn off firewall for **all three profiles** (Domain, Private, Public)
 
 <p align="center">
-<img src="https://i.imgur.com/DHn5csa.png" height="80%" width="80%"/>
+<img src="https://i.imgur.com/DHn5csa.png" height="70%" width="70%"/>
 <br />
 <strong>Windows Firewall Completely Disabled - VM Now Vulnerable</strong>
 </p>
 
-**Alternative PowerShell Method:**
-```powershell
-# Run as Administrator
-Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
-```
+> ⚠️ **Security Warning:** This configuration makes the VM extremely vulnerable. Only use in isolated lab environments.
 
 ### Phase 5: Initial Attack Observation
 
@@ -194,19 +157,19 @@ Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
 1. On the VM: **Start** → **Event Viewer**
 2. **Windows Logs** → **Security**
 3. Look for **Event ID 4625** (Failed logon attempts)
-4. Note the failed attempts from your IP address
+4. Note the failed attempts from external IP addresses
 
 <p align="center">
   <table>
     <tr>
-      <td><img src="https://imgur.com/wbLEwOD.png" width="400" height="300"/></td>
-      <td><img src="https://imgur.com/BaklKZV.png" width="400" height="300"/></td>
+      <td><img src="https://i.imgur.com/wbLEwOD.png" width="400" height="300"/></td>
+      <td><img src="https://i.imgur.com/BaklKZV.png" width="400" height="300"/></td>
     </tr>
   </table>
-  <p align="center">
+</p>
+<p align="center">
 <strong>Event Viewer Showing Failed Login Attempts (Event ID 4625)</strong>
 </p>
-
 
 > 💡 **Key Learning:** Event ID 4625 is critical for detecting brute force attacks and unauthorized access attempts.
 
@@ -218,20 +181,15 @@ Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
 1. Azure Portal → **Log Analytics workspaces** → **Create**
 2. **Resource group:** `RG-SOC-Lab`
 3. **Name:** `LAW-SOC-Lab`
-4. **Region:** `East US ` (same as other resources)
+4. **Region:** `East US 2` (same as other resources)
 5. **Pricing tier:** `Pay-as-you-go` (includes free tier)
 6. Click **Review + Create** → **Create**
 
 <p align="center">
-<img src="https://i.imgur.com/Ni61JHY.png" height="80%" width="80%"/>
+<img src="https://i.imgur.com/Ni61JHY.png" height="70%" width="70%"/>
 <br />
 <strong>Log Analytics Workspace Configuration</strong>
 </p>
-
-#### 2. **Verify Workspace Creation**
-1. Navigate to the created workspace
-2. Note the **Workspace ID** and **Location**
-3. **Overview** tab shows workspace details
 
 ### Phase 7: Microsoft Sentinel Integration
 
@@ -244,7 +202,7 @@ Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
 4. Wait for Sentinel to be added (includes free trial)
 
 <p align="center">
-<img src="https://i.imgur.com/1J8DvFz.png" height="80%" width="80%"/>
+<img src="https://i.imgur.com/1J8DvFz.png" height="70%" width="70%"/>
 <br />
 <strong>Microsoft Sentinel Added to Log Analytics Workspace</strong>
 </p>
@@ -252,21 +210,20 @@ Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
 #### 2. **Configure Security Events Data Connector**
 1. Sentinel → **Data connectors**
 2. Search for **Windows Security Events via AMA**
-3. **Open connector page**
-4. **Create data collection rule**
+3. **Open connector page** → **Create data collection rule**
+4. Select your honeypot VM → **All Security Events** → **Create**
 
 <p align="center">
   <table>
     <tr>
-      <td><img src="https://imgur.com/PlpeN73.png" width="400" height="300"/></td>
-      <td><img src="https://imgur.com/xwsbwfS.png" width="400" height="300"/></td>
+      <td><img src="https://i.imgur.com/PlpeN73.png" width="400" height="300"/></td>
+      <td><img src="https://i.imgur.com/xwsbwfS.png" width="400" height="300"/></td>
     </tr>
   </table>
 </p>
 <p align="center">
-  <strong>Windows Security Events via AMA Data Connector</strong>
+  <strong>Windows Security Events via AMA Data Connector Configuration</strong>
 </p>
-
 
 ### Phase 8: KQL Query Development & Log Analysis
 
@@ -286,37 +243,29 @@ SecurityEvent
 SecurityEvent
 | where EventID == 4625
 | where TimeGenerated > ago(24h)
-| take 50
+| project TimeGenerated, IpAddress, Account, Computer
+| order by TimeGenerated desc
 ```
 
 <p align="center">
-<img src="https://i.imgur.com/ZQ0HXDb.png" height="80%" width="80%"/>
+<img src="https://i.imgur.com/ZQ0HXDb.png" height="70%" width="70%"/>
 <br />
 <strong>Basic KQL Query Results - Failed Login Attempts</strong>
 </p>
 
-
 #### 3. **Real-Time Attack Monitoring**
-**Recent Failed Logins (Last 5 Minutes):**
-```kql
-SecurityEvent
-| where EventID == 4625
-| where TimeGenerated > ago(5m)
-| project TimeGenerated, IpAddress, Account
-| order by TimeGenerated desc
-```
-
 **Attack Frequency Analysis:**
 ```kql
 SecurityEvent
 | where EventID == 4625
 | where TimeGenerated > ago(6h)
 | summarize AttackCount = count() by IpAddress
+| where AttackCount > 5
 | order by AttackCount desc
 ```
 
 <p align="center">
-<img src="https://i.imgur.com/8RNUK1h.png" height="80%" width="80%"/>
+<img src="https://i.imgur.com/8RNUK1h.png" height="70%" width="70%"/>
 <br />
 <strong>KQL Attack Frequency Analysis - 300+ Attacks Detected</strong>
 </p>
@@ -327,32 +276,35 @@ SecurityEvent
 
 **🌍 Threat Intelligence Integration**
 
-#### 1. **Download Geographic IP Database**
-1. Download the CSV file: [geoip-summarized.csv](https://raw.githubusercontent.com/joshmadakor1/lognpacific-public/refs/heads/main/misc/geoip-summarized.csv)
-2. Save locally for upload to Azure
-
-#### 2. **Create Sentinel Watchlist**
-1. Sentinel → **Watchlists** → **Create new**
-2. **Name:** `geoip`
-3. **Alias:** `geoip`
-4. **Source type:** `Local file`
-5. **Upload file:** Select downloaded `geoip-summarized.csv`
-6. **Number of lines before header:** `0`
-7. **Search key:** `network`
-8. **Create**
+#### 1. **Create Sentinel Watchlist**
+1. Download [geoip-summarized.csv](https://raw.githubusercontent.com/joshmadakor1/lognpacific-public/refs/heads/main/misc/geoip-summarized.csv)
+2. Sentinel → **Watchlists** → **Create new**
+3. **Name:** `geoip` | **Alias:** `geoip`
+4. **Source type:** `Local file` | **Upload file:** geoip-summarized.csv
+5. **Search key:** `network` → **Create**
 
 <p align="center">
   <table>
     <tr>
-      <td><img src="https://imgur.com/o2dtyj4.png" width="400" height="300"/></td>
-      <td><img src="https://imgur.com/3n7Y2Iy.png" width="400" height="300"/></td>
+      <td><img src="https://i.imgur.com/o2dtyj4.png" width="400" height="300"/></td>
+      <td><img src="https://i.imgur.com/3n7Y2Iy.png" width="400" height="300"/></td>
     </tr>
   </table>
 </p>
 <p align="center">
-  <strong>Geographic IP Watchlist Creation in Sentinel</strong>
+  <strong>Geographic IP Watchlist Creation - 54,000 IP Records Imported</strong>
 </p>
 
+#### 2. **Geographic Enrichment Query**
+```kql
+let GeoIPDB_FULL = _GetWatchlist("geoip");
+SecurityEvent
+| where EventID == 4625
+| where TimeGenerated > ago(24h)
+| evaluate ipv4_lookup(GeoIPDB_FULL, IpAddress, network)
+| project TimeGenerated, IpAddress, Account, city, country, latitude, longitude
+| order by TimeGenerated desc
+```
 
 ### Phase 10: Attack Map Visualization
 
@@ -364,45 +316,31 @@ SecurityEvent
 3. **Add** → **Add query**
 
 #### 2. **Configure Map Visualization**
-1. **Advanced Editor** → Paste JSON configuration
-2. **Visualization:** `Map`
-3. **Map Settings:**
-   - **Location info using:** `Latitude/Longitude`
-   - **Latitude field:** `latitude`
-   - **Longitude field:** `longitude`
-   - **Size by:** `AttackCount`
-
 **Attack Map KQL Query:**
 ```kql
 let GeoIPDB_FULL = _GetWatchlist("geoip");
-let WindowsEvents = SecurityEvent
-    | where IpAddress == <attacker IP address>
-    | where EventID == 4625
-    | order by TimeGenerated desc
-    | evaluate ipv4_lookup(GeoIPDB_FULL, IpAddress, network);
-WindowsEvents
+SecurityEvent
+| where EventID == 4625
+| where TimeGenerated > ago(1h)
+| evaluate ipv4_lookup(GeoIPDB_FULL, IpAddress, network)
+| summarize AttackCount = count() by IpAddress, city, country, latitude, longitude
+| where AttackCount > 0 and isnotempty(latitude) and isnotempty(longitude)
 ```
 
 <p align="center">
-<img src="https://i.imgur.com/cqHUSNb.png" height="80%" width="80%"/>
+<img src="https://i.imgur.com/cqHUSNb.png" height="70%" width="70%"/>
 <br />
 <strong>Attack Map Workbook Configuration</strong>
 </p>
 
-#### 3. **Customize Map Appearance**
-1. **Map Settings:**
-   - **Color palette:** `Red to Green`
-   - **Minimum value:** `1`
-   - **Maximum value:** `100`
-   - **Default location when values are null:** `United States`
-
-#### 4. **Save and View Attack Map**
-1. **Save** workbook as `Attack-Map-Honeypot`
-2. **Done Editing** to view live map
-3. Observe real-time attack distribution globally
+#### 3. **Live Attack Map**
+1. **Visualization:** Map
+2. **Location info using:** Latitude/Longitude
+3. **Size by:** AttackCount
+4. **Save** workbook as `Attack-Map-Honeypot`
 
 <p align="center">
-<img src="https://imgur.com/CFIG800.png" height="80%" width="80%"/>
+<img src="https://i.imgur.com/CFIG800.png" height="70%" width="70%"/>
 <br />
 <strong>Live Attack Map Showing Global Threat Distribution</strong>
 </p>
@@ -442,6 +380,37 @@ WindowsEvents
 - **Peak activity:** 2-6 AM UTC
 - **Automated tool signatures** detected
 
+## 📊 Key KQL Queries for SOC Analysis
+
+### **Failed Login Monitoring**
+```kql
+SecurityEvent
+| where EventID == 4625
+| where TimeGenerated > ago(24h)
+| summarize FailureCount = count() by IpAddress, Account
+| where FailureCount > 5
+| order by FailureCount desc
+```
+
+### **Geographic Attack Analysis**
+```kql
+let GeoIPDB_FULL = _GetWatchlist("geoip");
+SecurityEvent
+| where EventID == 4625
+| where TimeGenerated > ago(24h)
+| evaluate ipv4_lookup(GeoIPDB_FULL, IpAddress, network)
+| summarize AttackCount = count() by country
+| order by AttackCount desc
+```
+
+### **Hourly Attack Trends**
+```kql
+SecurityEvent
+| where EventID == 4625
+| where TimeGenerated > ago(24h)
+| summarize AttackCount = count() by bin(TimeGenerated, 1h)
+| render timechart
+```
 
 ## 🧪 Common Issues & Solutions
 
@@ -449,14 +418,13 @@ WindowsEvents
 
 | Issue | Symptom | Solution |
 |-------|---------|----------|
-| **No Log Data** | Empty query results | Verify Log Analytics agent installation |
+| **No Log Data** | Empty query results | Verify Azure Monitoring Agent installation |
 | **Agent Not Installing** | Connection failures | Check NSG allows port 443 outbound |
 | **Sentinel Errors** | Data connector issues | Verify workspace permissions |
 | **VM Not Accessible** | RDP connection fails | Check public IP and NSG rules |
 | **No Attack Data** | No failed logins | Wait 24-48 hours for discovery |
 | **High Azure Costs** | Unexpected charges | Shut down VM when not in use; monitor usage |
 | **KQL Query Timeout** | Query exceeds limits | Reduce time range; add more specific filters |
-
 
 
 ## 🎓 Skills Demonstrated
