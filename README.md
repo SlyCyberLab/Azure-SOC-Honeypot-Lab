@@ -384,7 +384,7 @@ WindowsEvents
 ```
 
 <p align="center">
-<img src="https://i.imgur.com/cqHUSNb].png" height="80%" width="80%"/>
+<img src="https://i.imgur.com/cqHUSNb.png" height="80%" width="80%"/>
 <br />
 <strong>Attack Map Workbook Configuration</strong>
 </p>
