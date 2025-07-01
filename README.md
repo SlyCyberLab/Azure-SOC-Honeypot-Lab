@@ -318,10 +318,10 @@ SecurityEvent
 <p align="center">
 <img src="https://i.imgur.com/8RNUK1h.png" height="80%" width="80%"/>
 <br />
-<strong>KQL Attack Frequency Analysis - 6,000+ Attacks Detected</strong>
+<strong>KQL Attack Frequency Analysis - 300+ Attacks Detected</strong>
 </p>
 
-> 🎯 **Lab Results:** Within 30 minutes of exposure, over **6,000 failed login attempts** were recorded from various global IP addresses.
+> 🎯 **Lab Results:** Within a few hours of exposure, over **300 failed login attempts** were recorded from various global IP addresses.
 
 ### Phase 9: Geographic IP Enrichment
 
@@ -342,19 +342,15 @@ SecurityEvent
 8. **Create**
 
 <p align="center">
-<img src="https://i.imgur.com/[WATCHLIST_CREATION_SCREENSHOT].png" height="80%" width="80%"/>
-<br />
-<strong>Geographic IP Watchlist Creation in Sentinel</strong>
+  <table>
+    <tr>
+      <td><img src="https://imgur.com/o2dtyj4.png" width="400" height="300"/></td>
+      <td><img src="https://imgur.com/3n7Y2Iy.png" width="400" height="300"/></td>
+    </tr>
+  </table>
 </p>
-
-#### 3. **Monitor Watchlist Import**
-1. Monitor import progress (approximately 54,000 rows)
-2. Verify completion status shows **Succeeded**
-
 <p align="center">
-<img src="https://i.imgur.com/[WATCHLIST_IMPORTED_SCREENSHOT].png" height="80%" width="80%"/>
-<br />
-<strong>Watchlist Import Completed - 54,000 Geographic IP Records</strong>
+  <strong>Geographic IP Watchlist Creation in Sentinel</strong>
 </p>
 
 
@@ -379,16 +375,16 @@ SecurityEvent
 **Attack Map KQL Query:**
 ```kql
 let GeoIPDB_FULL = _GetWatchlist("geoip");
-SecurityEvent
-| where EventID == 4625
-| where TimeGenerated > ago(1h)
-| evaluate ipv4_lookup(GeoIPDB_FULL, SourceNetworkAddress, network)
-| summarize AttackCount = count() by SourceNetworkAddress, city, country, latitude, longitude
-| where AttackCount > 0
+let WindowsEvents = SecurityEvent
+    | where IpAddress == <attacker IP address>
+    | where EventID == 4625
+    | order by TimeGenerated desc
+    | evaluate ipv4_lookup(GeoIPDB_FULL, IpAddress, network);
+WindowsEvents
 ```
 
 <p align="center">
-<img src="https://i.imgur.com/[WORKBOOK_CREATION_SCREENSHOT].png" height="80%" width="80%"/>
+<img src="https://i.imgur.com/cqHUSNb].png" height="80%" width="80%"/>
 <br />
 <strong>Attack Map Workbook Configuration</strong>
 </p>
@@ -406,7 +402,7 @@ SecurityEvent
 3. Observe real-time attack distribution globally
 
 <p align="center">
-<img src="https://i.imgur.com/[ATTACK_MAP_LIVE_SCREENSHOT].png" height="80%" width="80%"/>
+<img src="https://imgur.com/CFIG800.png" height="80%" width="80%"/>
 <br />
 <strong>Live Attack Map Showing Global Threat Distribution</strong>
 </p>
@@ -446,37 +442,6 @@ SecurityEvent
 - **Peak activity:** 2-6 AM UTC
 - **Automated tool signatures** detected
 
-## 📊 Key KQL Queries for SOC Analysis
-
-### **Failed Login Monitoring**
-```kql
-SecurityEvent
-| where EventID == 4625
-| where TimeGenerated > ago(24h)
-| summarize FailureCount = count() by SourceNetworkAddress, Account
-| where FailureCount > 5
-| order by FailureCount desc
-```
-
-### **Geographic Attack Analysis**
-```kql
-let GeoIPDB_FULL = _GetWatchlist("geoip");
-SecurityEvent
-| where EventID == 4625
-| where TimeGenerated > ago(24h)
-| evaluate ipv4_lookup(GeoIPDB_FULL, SourceNetworkAddress, network)
-| summarize AttackCount = count() by country
-| order by AttackCount desc
-```
-
-### **Hourly Attack Trends**
-```kql
-SecurityEvent
-| where EventID == 4625
-| where TimeGenerated > ago(24h)
-| summarize AttackCount = count() by bin(TimeGenerated, 1h)
-| render timechart
-```
 
 ## 🧪 Common Issues & Solutions
 
@@ -492,46 +457,7 @@ SecurityEvent
 | **High Azure Costs** | Unexpected charges | Shut down VM when not in use; monitor usage |
 | **KQL Query Timeout** | Query exceeds limits | Reduce time range; add more specific filters |
 
-## 📁 Repository Structure
 
-```
-📦 Azure-SOC-Honeypot-Lab/
-├── 📂 screenshots/
-│   ├── 01-resource-group-creation.png
-│   ├── 02-vnet-configuration.png
-│   ├── 03-vm-creation.png
-│   ├── 04-vm-deployment.png
-│   ├── 05-rdp-connection.png
-│   ├── 06-nsg-rules-configuration.png
-│   ├── 07-firewall-disabled.png
-│   ├── 08-event-viewer-analysis.png
-│   ├── 09-law-creation.png
-│   ├── 10-sentinel-setup.png
-│   ├── 11-data-connector-config.png
-│   ├── 12-dcr-creation.png
-│   ├── 13-ama-installation.png
-│   ├── 14-kql-basic-queries.png
-│   ├── 15-attack-frequency-analysis.png
-│   ├── 16-watchlist-creation.png
-│   ├── 17-watchlist-imported.png
-│   ├── 18-geographic-enrichment.png
-│   ├── 19-workbook-creation.png
-│   └── 20-attack-map-live.png
-├── 📂 kql-queries/
-│   ├── failed-login-analysis.kql
-│   ├── geographic-attack-mapping.kql
-│   ├── attack-frequency-analysis.kql
-│   ├── hourly-attack-trends.kql
-│   └── threat-actor-profiling.kql
-├── 📂 data/
-│   └── geoip-summarized.csv
-├── 📂 documentation/
-│   ├── network-diagram.svg
-│   ├── architecture-overview.md
-│   └── attack-analysis-report.md
-├── README.md
-└── LICENSE
-```
 
 ## 🎓 Skills Demonstrated
 
