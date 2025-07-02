@@ -95,7 +95,7 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 4. **Region:** `East US 2`
 5. **Image:** `Windows 10 Pro`
 6. **Size:** `Standard_B2s (1 vcpu, 1 GiB memory)` *(cost-effective for lab)*
-7. **Username:** `sysadmin` / **Password:** `123Password!`
+7. **Username:** `sysadmin` / **Password:** `12Password!@`
 8. **Public inbound ports:** Allow RDP (3389)
 9. **Review + Create** → **Create**
 
@@ -137,7 +137,7 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 </p>
 
 #### 2. **Disable Windows Firewall**
-1. RDP to VM using `sysadmin` / `123Password!`
+1. RDP to VM using `sysadmin` / `12Password!@`
 2. **Windows Security** → **Firewall & network protection**
 3. Turn off firewall for **all three profiles** (Domain, Private, Public)
 
@@ -181,7 +181,7 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 1. Azure Portal → **Log Analytics workspaces** → **Create**
 2. **Resource group:** `RG-SOC-Lab`
 3. **Name:** `LAW-SOC-Lab`
-4. **Region:** `East US 2` (same as other resources)
+4. **Region:** `East US` (same as other resources)
 5. **Pricing tier:** `Pay-as-you-go` (includes free tier)
 6. Click **Review + Create** → **Create**
 
