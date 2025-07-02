@@ -242,13 +242,13 @@ SecurityEvent
 ```kql
 SecurityEvent
 | where EventID == 4625
-| where TimeGenerated > ago(24h)
+| where TimeGenerated > ago(5d)
 | project TimeGenerated, IpAddress, Account, Computer
 | order by TimeGenerated desc
 ```
 
 <p align="center">
-<img src="https://i.imgur.com/ZQ0HXDb.png" height="70%" width="70%"/>
+<img src="https://i.imgur.com/IWtVuJp.png" height="70%" width="70%"/>
 <br />
 <strong>Basic KQL Query Results - Failed Login Attempts</strong>
 </p>
@@ -265,7 +265,7 @@ SecurityEvent
 ```
 
 <p align="center">
-<img src="https://i.imgur.com/8RNUK1h.png" height="70%" width="70%"/>
+<img src="https://i.imgur.com/w2x0UiT.png" height="70%" width="70%"/>
 <br />
 <strong>KQL Attack Frequency Analysis - 300+ Attacks Detected</strong>
 </p>
@@ -340,45 +340,11 @@ SecurityEvent
 4. **Save** workbook as `Attack-Map-Honeypot`
 
 <p align="center">
-<img src="https://i.imgur.com/CFIG800.png" height="70%" width="70%"/>
+<img src="https://i.imgur.com/R6t0Vki.png" height="70%" width="70%"/>
 <br />
 <strong>Live Attack Map Showing Global Threat Distribution</strong>
 </p>
 
-## 🎯 Lab Results & Analysis
-
-### **Real-World Attack Statistics**
-
-**🚨 Attack Volume:**
-- **6,000+ failed login attempts** in first 30 minutes
-- **Multiple global IP addresses** targeting the honeypot
-- **Continuous attack patterns** from various countries
-- **Automated brute force tools** detected
-
-### **Geographic Attack Distribution**
-
-**Top Attack Sources (Sample Results):**
-- **Russia:** 1,247 attempts
-- **China:** 892 attempts  
-- **United States:** 634 attempts
-- **Brazil:** 445 attempts
-- **Germany:** 321 attempts
-
-### **Attack Patterns Observed**
-
-**Common Usernames Targeted:**
-- `administrator`
-- `admin`
-- `guest`
-- `user`
-- `test`
-- `oracle`
-- `postgres`
-
-**Attack Timing:**
-- **24/7 continuous scanning**
-- **Peak activity:** 2-6 AM UTC
-- **Automated tool signatures** detected
 
 ## 📊 Key KQL Queries for SOC Analysis
 
