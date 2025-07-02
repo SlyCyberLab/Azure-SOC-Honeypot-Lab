@@ -267,10 +267,10 @@ SecurityEvent
 <p align="center">
 <img src="https://i.imgur.com/w2x0UiT.png" height="70%" width="70%"/>
 <br />
-<strong>KQL Attack Frequency Analysis - 300+ Attacks Detected</strong>
+<strong>KQL Attack Frequency Analysis - 5,000+ Attacks Detected</strong>
 </p>
 
-> 🎯 **Lab Results:** Within a few hours of exposure, over **300 failed login attempts** were recorded from various global IP addresses.
+> 🎯 **Lab Results:** Within a few hours of exposure, over **5,000 failed login attempts** were recorded from various global IP addresses.
 
 ### Phase 9: Geographic IP Enrichment
 
@@ -423,18 +423,6 @@ SecurityEvent
 - Security data visualization and reporting
 - Forensic analysis techniques
 
-## 🚀 Future Enhancements
-
-- [ ] **Advanced KQL queries** for sophisticated threat hunting
-- [ ] **Custom Sentinel analytics rules** and automated playbooks
-- [ ] **Integration with external threat intelligence** feeds
-- [ ] **Automated incident response workflows** with Logic Apps
-- [ ] **PowerBI integration** for executive-level reporting
-- [ ] **Multi-VM honeypot network** expansion
-- [ ] **Advanced persistent threat (APT)** simulation
-- [ ] **Machine learning-based** anomaly detection
-- [ ] **SOAR (Security Orchestration)** implementation
-- [ ] **Compliance reporting** and audit trails
 
 ## 💡 Key Learnings
 
