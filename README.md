@@ -51,7 +51,7 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 4. Click **Review + Create** → **Create**
 
 <p align="center">
-  <img src="https://i.imgur.com/ZKHQTmc.png" alt="Resource Group Creation" width="600" />
+  <img src="https://i.imgur.com/ZKHQTmc.png" alt="Resource Group Creation" width="400" />
   <br />
   <strong>Resource Group Creation - Organizing Cloud Resources</strong>
 </p>
