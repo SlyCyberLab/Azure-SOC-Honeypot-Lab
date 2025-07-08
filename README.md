@@ -75,14 +75,15 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 <p align="center">
   <table>
     <tr>
-      <td><img src="https://i.imgur.com/ZOEKTIl.png" width="400" height="300"/></td>
-      <td><img src="https://i.imgur.com/nOo0mip.png" width="400" height="300"/></td>
+      <td><img src="https://i.imgur.com/ZOEKTIl.png" alt="Virtual Network Configuration" style="max-width: 400px; height: auto;"/></td>
+      <td><img src="https://i.imgur.com/nOo0mip.png" alt="Network Foundation Setup" style="max-width: 400px; height: auto;"/></td>
     </tr>
   </table>
 </p>
 <p align="center">
   <strong>Virtual Network Configuration - Network Foundation</strong>
 </p>
+
 
 ### Phase 3: Honeypot VM Deployment
 
@@ -100,9 +101,9 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 9. **Review + Create** → **Create**
 
 <p align="center">
-<img src="https://i.imgur.com/ewQrv0J.png" height="70%" width="70%"/>
-<br />
-<strong>VM Basic Configuration - Honeypot Disguised as Production Server</strong>
+  <img src="https://i.imgur.com/ewQrv0J.png" alt="VM Basic Configuration" style="max-width: 70%; height: auto;" />
+  <br />
+  <strong>VM Basic Configuration - Honeypot Disguised as Production Server</strong>
 </p>
 
 #### 2. **Network Configuration**
@@ -114,9 +115,9 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 6. **Select inbound ports:** `RDP (3389)`
 
 <p align="center">
-<img src="https://i.imgur.com/B6M6hhp.png" height="70%" width="70%"/>
-<br />
-<strong>VM Network Configuration</strong>
+  <img src="https://i.imgur.com/B6M6hhp.png" alt="VM Network Configuration" style="max-width: 70%; height: auto;" />
+  <br />
+  <strong>VM Network Configuration</strong>
 </p>
 
 ### Phase 4: Honeypot Configuration & Vulnerability
@@ -131,9 +132,9 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 5. **Name:** `ALLOW-ALL-INBOUND` → **Add**
 
 <p align="center">
-<img src="https://i.imgur.com/bRKicjK.png" height="70%" width="70%"/>
-<br />
-<strong>NSG Rule Configuration - Allowing All Inbound Traffic</strong>
+  <img src="https://i.imgur.com/bRKicjK.png" alt="NSG Rule Configuration" style="max-width: 70%; height: auto;" />
+  <br />
+  <strong>NSG Rule Configuration - Allowing All Inbound Traffic</strong>
 </p>
 
 #### 2. **Disable Windows Firewall**
@@ -142,9 +143,9 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 3. Turn off firewall for **all three profiles** (Domain, Private, Public)
 
 <p align="center">
-<img src="https://i.imgur.com/DHn5csa.png" height="70%" width="70%"/>
-<br />
-<strong>Windows Firewall Completely Disabled - VM Now Vulnerable</strong>
+  <img src="https://i.imgur.com/DHn5csa.png" alt="Windows Firewall Disabled" style="max-width: 70%; height: auto;" />
+  <br />
+  <strong>Windows Firewall Completely Disabled - VM Now Vulnerable</strong>
 </p>
 
 > ⚠️ **Security Warning:** This configuration makes the VM extremely vulnerable. Only use in isolated lab environments.
