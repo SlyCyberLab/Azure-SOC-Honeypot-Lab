@@ -51,7 +51,7 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 4. Click **Review + Create** → **Create**
 
 <p align="center">
-  <img src="https://i.imgur.com/ZKHQTmc.png" alt="Resource Group Creation" width="400" />
+  <img src="https://i.imgur.com/ZKHQTmc.png" alt="Resource Group Creation" />
   <br />
   <strong>Resource Group Creation - Organizing Cloud Resources</strong>
 </p>
@@ -284,13 +284,14 @@ SecurityEvent
 5. **Search key:** `network` → **Create**
 
 <p align="center">
-  <img src="https://i.imgur.com/o2dtyj4.png" alt="Geographic IP Watchlist Creation" style="max-width: 500px; height: auto;" />
+  <img src="https://i.imgur.com/o2dtyj4.png" alt="Geographic IP Watchlist Creation" />
   <br><br>
-  <img src="https://i.imgur.com/3n7Y2Iy.png" alt="54,000 IP Records Imported" style="max-width: 500px; height: auto;" />
+  <img src="https://i.imgur.com/3n7Y2Iy.png" alt="54,000 IP Records Imported" />
 </p>
 <p align="center">
   <strong>Geographic IP Watchlist Creation - 54,000 IP Records Imported</strong>
 </p>
+
 
 #### 2. **Geographic Enrichment Query**
 ```kql
