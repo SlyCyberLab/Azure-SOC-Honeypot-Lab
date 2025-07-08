@@ -160,17 +160,19 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 3. Look for **Event ID 4625** (Failed logon attempts)
 4. Note the failed attempts from external IP addresses
 
+
 <p align="center">
   <table>
     <tr>
-      <td><img src="https://i.imgur.com/wbLEwOD.png" width="400" height="300"/></td>
-      <td><img src="https://i.imgur.com/BaklKZV.png" width="400" height="300"/></td>
+      <td><img src="https://i.imgur.com/wbLEwOD.png" alt="Event Viewer Failed Logins" style="max-width: 400px; height: auto;"/></td>
+      <td><img src="https://i.imgur.com/BaklKZV.png" alt="Event ID 4625 Details" style="max-width: 400px; height: auto;"/></td>
     </tr>
   </table>
 </p>
 <p align="center">
-<strong>Event Viewer Showing Failed Login Attempts (Event ID 4625)</strong>
+  <strong>Event Viewer Showing Failed Login Attempts (Event ID 4625)</strong>
 </p>
+
 
 > 💡 **Key Learning:** Event ID 4625 is critical for detecting brute force attacks and unauthorized access attempts.
 
