@@ -51,9 +51,9 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 4. Click **Review + Create** → **Create**
 
 <p align="center">
-<img src="https://i.imgur.com/ZKHQTmc.png" height="70%" width="70%"/>
-<br />
-<strong>Resource Group Creation - Organizing Cloud Resources</strong>
+  <img src="https://i.imgur.com/ZKHQTmc.png" alt="Resource Group Creation" style="max-width: 70%; height: auto;" />
+  <br />
+  <strong>Resource Group Creation - Organizing Cloud Resources</strong>
 </p>
 
 > 💡 **Best Practice:** Resource Groups act as logical containers for Azure resources, enabling organized management and cost tracking.
