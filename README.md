@@ -97,6 +97,7 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 8. **Public inbound ports:** Allow RDP (3389)
 9. **Review + Create** → **Create**
 
+
 <p align="center">
   <img src="https://i.imgur.com/ewQrv0J.png" alt="VM Basic Configuration" style="max-width: 70%; height: auto;" />
   <br />
@@ -117,6 +118,7 @@ This home lab demonstrates the deployment and configuration of a complete Securi
   <strong>VM Network Configuration</strong>
 </p>
 
+
 ### Phase 4: Honeypot Configuration & Vulnerability
 
 **🔓 Making the VM Intentionally Vulnerable**
@@ -127,6 +129,7 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 3. **Source:** `Any (*)` | **Destination:** `Any (*)`
 4. **Protocol:** `Any` | **Action:** `Allow` | **Priority:** `100`
 5. **Name:** `ALLOW-ALL-INBOUND` → **Add**
+
 
 <p align="center">
   <img src="https://i.imgur.com/bRKicjK.png" alt="NSG Rule Configuration" style="max-width: 70%; height: auto;" />
@@ -144,6 +147,7 @@ This home lab demonstrates the deployment and configuration of a complete Securi
   <br />
   <strong>Windows Firewall Completely Disabled - VM Now Vulnerable</strong>
 </p>
+
 
 > ⚠️ **Security Warning:** This configuration makes the VM extremely vulnerable. Only use in isolated lab environments.
 
@@ -210,6 +214,7 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 3. **Open connector page** → **Create data collection rule**
 4. Select your honeypot VM → **All Security Events** → **Create**
 
+
 <p align="center">
   <img src="https://i.imgur.com/PlpeN73.png" alt="Windows Security Events Configuration" style="max-width: 500px; height: auto;" />
   <br><br>
@@ -249,7 +254,6 @@ SecurityEvent
 </p>
 
 #### 3. **Real-Time Attack Monitoring**
-
 **Attack Frequency Analysis:**
 ```kql
 SecurityEvent
@@ -338,6 +342,7 @@ SecurityEvent
   <strong>Live Attack Map Showing Global Threat Distribution</strong>
 </p>
 
+
 ## 📊 Key KQL Queries for SOC Analysis
 
 ### **Failed Login Monitoring**
@@ -383,6 +388,7 @@ SecurityEvent
 | **No Attack Data** | No failed logins | Wait 24-48 hours for discovery |
 | **High Azure Costs** | Unexpected charges | Shut down VM when not in use; monitor usage |
 | **KQL Query Timeout** | Query exceeds limits | Reduce time range; add more specific filters |
+
 
 
 ## 💡 Key Learnings
