@@ -159,12 +159,9 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 
 
 <p align="center">
-  <table>
-    <tr>
-      <td><img src="https://i.imgur.com/wbLEwOD.png" alt="Event Viewer Failed Logins" style="max-width: 400px; height: auto;"/></td>
-      <td><img src="https://i.imgur.com/BaklKZV.png" alt="Event ID 4625 Details" style="max-width: 400px; height: auto;"/></td>
-    </tr>
-  </table>
+  <img src="https://i.imgur.com/wbLEwOD.png" alt="Event Viewer Failed Logins" style="max-width: 500px; height: auto;" />
+  <br><br>
+  <img src="https://i.imgur.com/BaklKZV.png" alt="Event ID 4625 Details" style="max-width: 500px; height: auto;" />
 </p>
 <p align="center">
   <strong>Event Viewer Showing Failed Login Attempts (Event ID 4625)</strong>
@@ -186,9 +183,9 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 6. Click **Review + Create** → **Create**
 
 <p align="center">
-<img src="https://i.imgur.com/Ni61JHY.png" height="70%" width="70%"/>
-<br />
-<strong>Log Analytics Workspace Configuration</strong>
+  <img src="https://i.imgur.com/Ni61JHY.png" alt="Log Analytics Workspace Configuration" style="max-width: 70%; height: auto;" />
+  <br />
+  <strong>Log Analytics Workspace Configuration</strong>
 </p>
 
 ### Phase 7: Microsoft Sentinel Integration
@@ -202,9 +199,9 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 4. Wait for Sentinel to be added (includes free trial)
 
 <p align="center">
-<img src="https://i.imgur.com/1J8DvFz.png" height="70%" width="70%"/>
-<br />
-<strong>Microsoft Sentinel Added to Log Analytics Workspace</strong>
+  <img src="https://i.imgur.com/1J8DvFz.png" alt="Microsoft Sentinel Added to Log Analytics Workspace" style="max-width: 70%; height: auto;" />
+  <br />
+  <strong>Microsoft Sentinel Added to Log Analytics Workspace</strong>
 </p>
 
 #### 2. **Configure Security Events Data Connector**
@@ -214,16 +211,14 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 4. Select your honeypot VM → **All Security Events** → **Create**
 
 <p align="center">
-  <table>
-    <tr>
-      <td><img src="https://i.imgur.com/PlpeN73.png" width="400" height="300"/></td>
-      <td><img src="https://i.imgur.com/xwsbwfS.png" width="400" height="300"/></td>
-    </tr>
-  </table>
+  <img src="https://i.imgur.com/PlpeN73.png" alt="Windows Security Events Configuration" style="max-width: 500px; height: auto;" />
+  <br><br>
+  <img src="https://i.imgur.com/xwsbwfS.png" alt="AMA Data Connector Setup" style="max-width: 500px; height: auto;" />
 </p>
 <p align="center">
   <strong>Windows Security Events via AMA Data Connector Configuration</strong>
 </p>
+
 
 ### Phase 8: KQL Query Development & Log Analysis
 
@@ -248,12 +243,13 @@ SecurityEvent
 ```
 
 <p align="center">
-<img src="https://i.imgur.com/IWtVuJp.png" height="70%" width="70%"/>
-<br />
-<strong>Basic KQL Query Results - Failed Login Attempts</strong>
+  <img src="https://i.imgur.com/IWtVuJp.png" alt="Basic KQL Query Results - Failed Login Attempts" style="max-width: 70%; height: auto;" />
+  <br />
+  <strong>Basic KQL Query Results - Failed Login Attempts</strong>
 </p>
 
 #### 3. **Real-Time Attack Monitoring**
+
 **Attack Frequency Analysis:**
 ```kql
 SecurityEvent
@@ -265,9 +261,9 @@ SecurityEvent
 ```
 
 <p align="center">
-<img src="https://i.imgur.com/w2x0UiT.png" height="70%" width="70%"/>
-<br />
-<strong>KQL Attack Frequency Analysis - 5,000+ Attacks Detected</strong>
+  <img src="https://i.imgur.com/w2x0UiT.png" alt="KQL Attack Frequency Analysis" style="max-width: 70%; height: auto;" />
+  <br />
+  <strong>KQL Attack Frequency Analysis - 5,000+ Attacks Detected</strong>
 </p>
 
 > 🎯 **Lab Results:** Within a few hours of exposure, over **5,000 failed login attempts** were recorded from various global IP addresses.
@@ -284,12 +280,9 @@ SecurityEvent
 5. **Search key:** `network` → **Create**
 
 <p align="center">
-  <table>
-    <tr>
-      <td><img src="https://i.imgur.com/o2dtyj4.png" width="400" height="300"/></td>
-      <td><img src="https://i.imgur.com/3n7Y2Iy.png" width="400" height="300"/></td>
-    </tr>
-  </table>
+  <img src="https://i.imgur.com/o2dtyj4.png" alt="Geographic IP Watchlist Creation" style="max-width: 500px; height: auto;" />
+  <br><br>
+  <img src="https://i.imgur.com/3n7Y2Iy.png" alt="54,000 IP Records Imported" style="max-width: 500px; height: auto;" />
 </p>
 <p align="center">
   <strong>Geographic IP Watchlist Creation - 54,000 IP Records Imported</strong>
@@ -328,9 +321,9 @@ SecurityEvent
 ```
 
 <p align="center">
-<img src="https://i.imgur.com/cqHUSNb.png" height="70%" width="70%"/>
-<br />
-<strong>Attack Map Workbook Configuration</strong>
+  <img src="https://i.imgur.com/cqHUSNb.png" alt="Attack Map Workbook Configuration" style="max-width: 70%; height: auto;" />
+  <br />
+  <strong>Attack Map Workbook Configuration</strong>
 </p>
 
 #### 3. **Live Attack Map**
@@ -340,11 +333,10 @@ SecurityEvent
 4. **Save** workbook as `Attack-Map-Honeypot`
 
 <p align="center">
-<img src="https://i.imgur.com/R6t0Vki.png" height="70%" width="70%"/>
-<br />
-<strong>Live Attack Map Showing Global Threat Distribution</strong>
+  <img src="https://i.imgur.com/R6t0Vki.png" alt="Live Attack Map Showing Global Threat Distribution" style="max-width: 70%; height: auto;" />
+  <br />
+  <strong>Live Attack Map Showing Global Threat Distribution</strong>
 </p>
-
 
 ## 📊 Key KQL Queries for SOC Analysis
 
@@ -391,37 +383,6 @@ SecurityEvent
 | **No Attack Data** | No failed logins | Wait 24-48 hours for discovery |
 | **High Azure Costs** | Unexpected charges | Shut down VM when not in use; monitor usage |
 | **KQL Query Timeout** | Query exceeds limits | Reduce time range; add more specific filters |
-
-
-## 🎓 Skills Demonstrated
-
-**Cloud Security Operations:**
-- Microsoft Azure platform administration and security
-- Security Operations Center (SOC) design and implementation
-- SIEM configuration and management (Microsoft Sentinel)
-- Log aggregation, analysis, and correlation
-- Threat detection and incident response procedures
-
-**Security Analytics:**
-- KQL (Kusto Query Language) development and optimization
-- Security event correlation and analysis
-- Attack pattern recognition and threat hunting
-- Geographic threat intelligence integration
-- Security metrics and visualization
-
-**Cloud Infrastructure:**
-- Azure resource management and organization
-- Virtual networking and security group configuration
-- Virtual machine deployment and hardening (reverse)
-- Identity and access management
-- Cost optimization and resource monitoring
-
-**Threat Intelligence:**
-- Geographic IP mapping and enrichment
-- Attack attribution and profiling
-- Real-time threat monitoring and alerting
-- Security data visualization and reporting
-- Forensic analysis techniques
 
 
 ## 💡 Key Learnings
