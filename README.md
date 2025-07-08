@@ -73,12 +73,9 @@ This home lab demonstrates the deployment and configuration of a complete Securi
 8. Click **Review + Create** → **Create**
 
 <p align="center">
-  <table>
-    <tr>
-      <td><img src="https://i.imgur.com/ZOEKTIl.png" alt="Virtual Network Configuration" style="max-width: 400px; height: auto;"/></td>
-      <td><img src="https://i.imgur.com/nOo0mip.png" alt="Network Foundation Setup" style="max-width: 400px; height: auto;"/></td>
-    </tr>
-  </table>
+  <img src="https://i.imgur.com/ZOEKTIl.png" alt="Virtual Network Configuration" style="max-width: 500px; height: auto;" />
+  <br><br>
+  <img src="https://i.imgur.com/nOo0mip.png" alt="Network Foundation Setup" style="max-width: 500px; height: auto;" />
 </p>
 <p align="center">
   <strong>Virtual Network Configuration - Network Foundation</strong>
